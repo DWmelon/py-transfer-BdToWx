@@ -50,6 +50,13 @@ def printme(parent,filename):
 	newFile.close()
 	return;
 
+str = raw_input("输入 源项目根目录 和 转后的存放目录\n比如:\n/Users/melon/company/baiduproject /Users/melon/company/wxproject\n请输入：\n")
+paths = str.split(' ')
+if len(paths) != 2 :
+	print "输入有误，请确认是否为两个路径，中间用一个空格隔开"
+	os._exit(0)
+rootdir = paths[0]
+newdir = paths[1]
 for parent,dirnames,filenames in os.walk(rootdir):    #三个参数：分别返回1.父目录 2.所有文件夹名字（不含路径） 3.所有文件名字
     # for dirname in  dirnames:                       #输出文件夹信息
         # print "parent is:" + parent
