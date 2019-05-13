@@ -83,3 +83,12 @@ wx:for="{{majorList}}"                     //微信必须加{{}}
 userInfo = res.data.data.user_info; //百度编译通过并能正常赋值，类似Python
 userInfo = res.data.data.user_info; //微信编译不通过，需加let/var定义变量
 ```
+###### 情况八：
+```
+<schitem item="{{item}}" bindtap="handleIntentSchool" data-schId="{{item.sch_id}}"></schitem>
+
+handleIntentSchool: function (e) {
+        let schId = e.currentTarget.dataset.schid; //微信会转成小写
+}
+xml中配置的参数是data-schId，实际上微信会转成小写，而百度能识别大小写，所以为了通用，data配的参数都用小写
+```
