@@ -10,7 +10,10 @@ def printme(parent,filename):
 	#源文件路径
 	originPath = os.path.join(parent,filename)
 	#打开源文件
-	originFile = open(originPath, "r")
+	try:
+		originFile = open(originPath, "r")
+	except IOError:
+    		return
 	content = originFile.read()
 	#修正源内容
 	if content.find(keyword) != -1:
