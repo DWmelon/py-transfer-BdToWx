@@ -5,37 +5,38 @@ import os.path
 rootdir = "/Users/melon/company/baiduproject"                                   # 指明被遍历的文件夹
 newdir = "/Users/melon/company/ttproject"
 type = ""
+
 def verifyWordAndModify(content):
-    # 替换API关键词
-    if type == "1":
-        content = content.replace('swan','wx')
-        content = content.replace('s-for','wx:for')
-        content = content.replace('s-for-item','wx:for-item')
-        content = content.replace('s-for-index','wx:for-index')
-        content = content.replace('s-for-index','wx:for-index')
-        content = content.replace('s-if','wx:if')
-        content = content.replace('s-elif','wx:elif')
-        content = content.replace('s-else','wx:else')
-    if type == "2":
-        content = content.replace('swan','tt')
-        content = content.replace('s-for','tt:for')
-        content = content.replace('s-for-item','tt:for-item')
-        content = content.replace('s-for-index','tt:for-index')
-        content = content.replace('s-for-index','tt:for-index')
-        content = content.replace('s-if','tt:if')
-        content = content.replace('s-elif','tt:elif')
-        content = content.replace('s-else','tt:else')
+    	# 替换API关键词
+    	if type == "1":
+        	content = content.replace('swan','wx')
+        	content = content.replace('s-for','wx:for')
+        	content = content.replace('s-for-item','wx:for-item')
+        	content = content.replace('s-for-index','wx:for-index')
+        	content = content.replace('s-for-index','wx:for-index')
+        	content = content.replace('s-if','wx:if')
+        	content = content.replace('s-elif','wx:elif')
+        	content = content.replace('s-else','wx:else')
+    	if type == "2":
+        	content = content.replace('swan','tt')
+        	content = content.replace('s-for','tt:for')
+        	content = content.replace('s-for-item','tt:for-item')
+        	content = content.replace('s-for-index','tt:for-index')
+        	content = content.replace('s-for-index','tt:for-index')
+        	content = content.replace('s-if','tt:if')
+        	content = content.replace('s-elif','tt:elif')
+        	content = content.replace('s-else','tt:else')
 	return content
 
 def verifyPathAndModify(path):
-    # 重命名文件
-    if type == "1":
-        path = path.replace('.swan','.wxml')
-        path = path.replace('.css','.wxss')
-    if type == "2":
-        path = path.replace('.swan','.ttml')
-        path = path.replace('.css','.ttss')
-    return path
+	# 重命名文件
+	if type == "1":
+		path = path.replace('.swan','.wxml')
+		path = path.replace('.css','.wxss')
+	if type == "2":
+		path = path.replace('.swan','.ttml')
+		path = path.replace('.css','.ttss')
+	return path
 
 # 定义函数
 def printme(parent,filename):
@@ -54,11 +55,11 @@ def printme(parent,filename):
 		os.makedirs(newDir)
 	#读取源文件内容
 	newFile = open(newPath, "w")
-	content = originFile.read()
+	fileContent = originFile.read()
 	#修正源内容
-	content = verifyWordAndModify(content)
+	fileContent = verifyWordAndModify(fileContent)
 	#写入到新文件中
-	newFile.write(content)
+	newFile.write(fileContent)
 	#关闭文件
 	originFile.close()
 	newFile.close()
